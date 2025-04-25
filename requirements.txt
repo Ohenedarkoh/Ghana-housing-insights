@@ -1,2 +1,8 @@
 ipykernel
 python-dotenv
+requests
+BeautifulSoup
+pandas
+time
+sqlalchemy
+cryptography
