@@ -1,10 +1,10 @@
-# Data Project Template
+# Ghana Housing Insights
 
-<a target="_blank" href="https://datalumina.com/">
+<a target="_blank" href="https://github.com/Ohenedarkoh/Ghana-housing-insights">
     <img src="https://img.shields.io/badge/Datalumina-Project%20Template-2856f7" alt="Datalumina Project" />
 </a>
 
-## Cookiecutter Data Science
+## Project Overview
 This project template is a simplified version of the [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org) template, created to suit the needs of Datalumina and made available as a GitHub template.
 
 ## Adjusting .gitignore
