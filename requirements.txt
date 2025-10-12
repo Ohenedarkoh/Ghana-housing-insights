@@ -6,3 +6,8 @@ pandas
 time
 sqlalchemy
 cryptography
+pytest-cov
+numpy
+matplotlib
+seaborn
+psycopg2-binary
