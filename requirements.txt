@@ -1,13 +1,32 @@
-ipykernel
-python-dotenv
-requests
-BeautifulSoup
-pandas
-time
-sqlalchemy
-cryptography
-pytest-cov
-numpy
-matplotlib
-seaborn
-psycopg2-binary
+# Core utilities
+ipykernel               # Jupyter or VSCode notebook support
+python-dotenv           # Load environment variables from .env
+requests                # Make HTTP requests to APIs or web pages
+cryptography            # Encryption and decryption
+loguru                  # Logging and debugging
+
+# Data handling
+pandas                  # Data manipulation and analysis
+numpy                   # Numerical operations
+sqlalchemy              # Database ORM and connections
+psycopg2-binary         # PostgreSQL database driver
+joblib                  # Save and load ML models
+BeautifulSoup           # Parse HTML for scraping
+
+# Visualization
+matplotlib              # Basic plotting
+seaborn                 # Statistical visualization
+
+# Machine learning
+scikit-learn            # ML algorithms, metrics, preprocessing
+xgboost                 # Gradient boosting model
+
+# Testing and code quality
+pytest                  # Testing framework
+pytest-cov              # Code coverage reports
+black                   # Code formatter
+flake8                  # Linter for style and errors
+
+# Deployment and API
+fastapi                 # Build REST APIs
+uvicorn                 # ASGI server for running FastAPI
