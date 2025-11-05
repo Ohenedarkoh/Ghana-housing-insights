@@ -30,3 +30,4 @@ flake8                  # Linter for style and errors
 # Deployment and API
 fastapi                 # Build REST APIs
 uvicorn                 # ASGI server for running FastAPI
+pydantic                # Data validation for FastAPI
