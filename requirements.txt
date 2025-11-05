@@ -11,7 +11,7 @@ numpy                   # Numerical operations
 sqlalchemy              # Database ORM and connections
 psycopg2-binary         # PostgreSQL database driver
 joblib                  # Save and load ML models
-BeautifulSoup           # Parse HTML for scraping
+beautifulsoup4              # Parse HTML for scraping
 
 # Visualization
 matplotlib              # Basic plotting
