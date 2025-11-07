@@ -33,7 +33,7 @@ def predict_house_price(features : HouseFeatures):
     actual_price = float(np.exp(prediction[0]))
 
 
-    return {"Predicted_price": actual_price}
+    return {"Predicted_price": f"GHS {actual_price:,.2f}"}
 
 
 @app.get("/")
