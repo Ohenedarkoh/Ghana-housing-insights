@@ -1,82 +1,52 @@
-# Ghana Housing Insights
-This project is one where data was collected from meqasa (a popular ghanaian real estate website) to generate insights from properties, homes, apartments, office spaces listed for rent.
+# Ghana Housing Insights: Predicting Rental Prices with Machine Learning
 
-## Installation
+This project delivers an end-to-end data science solution for analyzing and predicting rental housing prices in Ghana. It covers automated web scraping, data processing, machine learning model development, and API deployment to provide data-driven insights for the real estate market.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install requirements.
+## Key Features
 
-```bash
-pip install requirements.txt
-```
+*   **Data Acquisition**: Python web scraper for Meqasa property listings.
+*   **ETL Pipeline**: Data cleaning, feature engineering (including advanced amenity grouping), and loading into a **PostgreSQL** database.
+*   **Price Prediction Model**: Optimized **XGBoost Regressor** for housing price prediction.
+*   **Real-time API**: **FastAPI** for serving model predictions with interactive Swagger UI.
+*   **Business Intelligence**: **Power BI dashboards** for market insights.
+
+## Technologies Used
+
+Python (Pandas, NumPy, BeautifulSoup4, Requests, Scikit-Learn, XGBoost, FastAPI, Pydantic, Uvicorn, SQLAlchemy), PostgreSQL, Microsoft Power BI, Jupyter Notebook, Render.com.
+
+## Setup & Local Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Ohenedarkoh/Ghana-housing-insights.git
+    cd Ghana-housing-insights
+    ```
+2.  **Create & activate virtual environment.**
+3.  **Install dependencies:** `pip install -r requirements.txt`
+4.  **PostgreSQL & Environment Variables**: Set up a PostgreSQL database and configure credentials in a `.env` file (added to `.gitignore`).
 
 ## Usage
 
-```python
-import pandas as pd
+*   **Run ETL**: Execute `notebooks/cleaning.ipynb` to clean data and load into PostgreSQL.
+*   **Train Model**: Run `notebooks/xgboost.ipynb` to train, tune, and save the XGBoost model.
+*   **Run API Locally**: From project root, use `uvicorn model.api.app:app --reload`. Access docs at `https://ghana-housing-insights-1.onrender.com`.
 
-# read a csv file'
-housing = pd.read_csv()
+## Deployment
 
-# check for duplicates
-housing_duplicates = housing.duplicated() 
-print("Duplicated in the housing file is ",housing_duplicated)
+The FastAPI application is deployed as a Web Service on **Render.com**.
+*   **Deployed API Base URL**: https://ghana-housing-insights-1.onrender.com
+*   **Deployed API Docs**: https://ghana-housing-insights-1.onrender.com/docs
 
-# print number of null values
-null_counts= housing.isnull().sum()
-print(null_counts)
-```
+## Model Performance
 
+The optimized XGBoost Regressor shows strong predictive power:
+*   **Initial R² ,RMSE and MAE Score**:  0.4116, 0.7992, 0.6058
+*   **Optimized R² Score**: 0.45089
 
-## Test Coverage
+## Contact
 
-Tests were implemented using **pytest** to ensure the reliability of the scraper.  
-Each major function in the `MeqasaScraper` class was tested to validate expected behavior under various conditions.
-
-### **Functions Tested**
-- `fetch_page()` – verifies page fetching and HTTP status handling  
-- `parse_listing_page()` – ensures correct parsing of property listings  
-- `extract_listing_details()` – checks extraction of title, price, and URLs  
-- `scrape_listing_details()` – validates detailed listing data extraction  
-- `scrape_page()` – tests page-level scraping integration  
-- `save_to_csv()` – confirms correct CSV file creation and saving  
-
-### **Coverage Command**
-```bash
-pytest --cov=data --cov-report=term-missing
-```
-
----------- coverage: platform win32, python 3.13 ----------
-```
-Name                  Stmts   Miss  Cover   Missing
----------------------------------------------------
-data/__init__.py          0      0   100%
-data/datascraper.py      99     25    75%   48, 67, 73, 75, 78-84, 113, 121-123, 127-132, 137-146
----------------------------------------------------
-TOTAL                    99     25    75%
-```
-
-
-## Interpretation
-```
-Overall Coverage: 75%
-Core scraper logic (fetching, parsing, and saving) is fully tested.
-The untested lines correspond mainly to:
-    1.Console print statements
-    2.time.sleep() delay logic
-    3.Error-handling branches that require failed requests or missing data
-```
-## Conclusion
-
-The test suite achieves 75% coverage, verifying that all critical scraper functions operate correctly.
-Untested lines are non-critical, primarily involving print logs and timing delays.
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+[Frank Ohene-Darkoh] - [ohenedarkohfrank@gmail.com] - [[Your LinkedIn Profile URL](https://www.linkedin.com/in/frankohene-darkoh-44412222b)]
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+MIT License.
