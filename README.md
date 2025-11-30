@@ -45,7 +45,7 @@ The optimized XGBoost Regressor shows strong predictive power:
 
 ## Contact
 
-[Frank Ohene-Darkoh] - [ohenedarkohfrank@gmail.com] - [[Your LinkedIn Profile URL](https://www.linkedin.com/in/frankohene-darkoh-44412222b)]
+Frank Ohene-Darkoh - ohenedarkohfrank@gmail.com - https://www.linkedin.com/in/frankohene-darkoh-44412222b
 
 ## License
 
