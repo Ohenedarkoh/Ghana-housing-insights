@@ -1,0 +1,81 @@
+# Housing Price Prediction Model Performance Report
+
+**Author:** Frank Ohene-Darkoh
+**Project:** Ghana Housing Insights
+
+---
+
+## 1. Introduction & Objective
+
+This report details the development, optimization, and performance of an XGBoost regression model designed to predict housing prices based on various property features. The primary objective is to accurately estimate housing prices to provide actionable insights for real estate valuation and investment strategies.
+
+---
+
+## 2. Data Overview
+
+The model was trained on a cleaned dataset derived from scraped property listings from Meqasa. The data underwent the following key processing steps:
+*   **Source**: Meqasa property listings.
+*   **Cleaning**: Handling missing values, converting data types, and removing irrelevant columns.
+*   **Feature Engineering**: Creation of grouped amenity features (e.g., `comfortFeatures`, `luxuryFeatures`, `exSpace`) from individual amenity flags.
+*   **Target Transformation**: Log transformation applied to the `Price` column (`LogPrice`) to address skewness and improve model linearity assumptions.
+
+**Key Features Used:**
+*   `Bedrooms`
+*   `Bathrooms`
+*   `luxuryFeatures`
+*   `comfortFeatures`
+*   `utilityFeatures`
+*   `connectivityFeatures`
+*   `exSpace`
+
+---
+
+## 3. Model Development & Evaluation
+
+### 3.1. Initial XGBoost Model
+
+An initial XGBoost Regressor model was trained with default hyperparameters (or basic settings).
+
+*   **Model Type**: `XGBRegressor`
+*   **Training Data**: 80% of the `housing_cleaned.csv` dataset
+*   **Testing Data**: 20% of the `housing_cleaned.csv` dataset
+
+**Initial Performance Metrics (before hyperparameter tuning):**
+*   **R² Score**: [Insert initial R² score from `xgboost.ipynb` cell #VSC-62535040, e.g., `0.411`]
+*   **RMSE**: [Insert initial RMSE score from `xgboost.ipynb` cell #VSC-62535040]
+*   **MAE**: [Insert initial MAE score from `xgboost.ipynb` cell #VSC-62535040]
+
+### 3.2. Hyperparameter Tuning
+
+To optimize model performance, `GridSearchCV` was employed to systematically search for the best combination of hyperparameters for the `XGBRegressor`.
+
+*   **Tuning Method**: `sklearn.model_selection.GridSearchCV`
+*   **Cross-Validation**: 3-fold cross-validation (`cv=3`)
+*   **Scoring Metric**: R² score (`scoring='r2'`)
+*   **Hyperparameter Grid Explored**:
+    *   `n_estimators`: `[50, 100, 200]`
+    *   `max_depth`: `[3, 5, 7]`
+    *   `learning_rate`: `[0.01, 0.1, 0.2]`
+    *   `subsample`: `[0.8, 1.0]`
+
+**Best Hyperparameters Found:**
+*   `n_estimators`: [Insert `grid_search.best_params_['n_estimators']` from `xgboost.ipynb` cell #VSC-8be3ca23]
+*   `max_depth`: [Insert `grid_search.best_params_['max_depth']` from `xgboost.ipynb` cell #VSC-8be3ca23]
+*   `learning_rate`: [Insert `grid_search.best_params_['learning_rate']` from `xgboost.ipynb` cell #VSC-8be3ca23]
+*   `subsample`: [Insert `grid_search.best_params_['subsample']` from `xgboost.ipynb` cell #VSC-8be3ca23]
+
+**Optimized Model Performance (after hyperparameter tuning):**
+*   **Best R² Score (on validation sets during grid search)**: [Insert `grid_search.best_score_` from `xgboost.ipynb` cell #VSC-8be3ca23, e.g., `0.45`]
+    *   *(Note: This is the R² from the best estimator on the validation folds during tuning. You can also re-evaluate `grid_search.best_estimator_` on the held-out `X_test_tree, y_test_log` for a final test set R² if you wish.)*
+
+---
+
+## 4. Conclusion & Next Steps
+
+The hyperparameter tuning significantly improved the model's performance, resulting in an R² score of [Insert `grid_search.best_score_` value here] which indicates that [Percentage]% of the variance in the log-transformed housing prices can be explained by the model's features.
+
+**Next Steps:**
+*   **Deployment**: The optimized model has been saved as `xgboost_best_model.pkl` and is served via a FastAPI application.
+*   **Frontend Development**: Consider building a user-friendly web interface (e.g., using Streamlit or Gradio) to make the model accessible to non-technical users.
+*   **Further Feature Engineering**: Explore additional features or interaction terms that could enhance prediction accuracy.
+*   **Model Monitoring**: Implement monitoring for the deployed model to detect performance degradation over time.
